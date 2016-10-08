@@ -1,0 +1,7 @@
+/.idea/workspace.xml
+/build/target
+/target
+/tasks-teamcity-plugin-agent/target
+/tasks-teamcity-plugin-common/target
+/tasks-teamcity-plugin-server/target
+.DS_Store
