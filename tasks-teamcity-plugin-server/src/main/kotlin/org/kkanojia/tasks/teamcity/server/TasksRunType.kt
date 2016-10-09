@@ -44,7 +44,8 @@ class TasksRunType(
                 TaskBuildRunnerConstants.PARAM_INCLUDE_REGEX to "**/*.{java,scala,jsp,html,js,scss}",
                 TaskBuildRunnerConstants.PARAM_PATTERN_MINOR_REGEX to ".*[Ii][Dd][Ee][Aa].*",
                 TaskBuildRunnerConstants.PARAM_PATTERN_MAJOR_REGEX to ".*[Tt][Oo][Dd][Oo].*",
-                TaskBuildRunnerConstants.PARAM_PATTERN_CRITICAL_REGEX to ".*[Ff][Ii][Xx][Mm][Ee].*"
+                TaskBuildRunnerConstants.PARAM_PATTERN_CRITICAL_REGEX to ".*[Ff][Ii][Xx][Mm][Ee].*",
+                TaskBuildRunnerConstants.PARAM_FAIL_BUILD_FLAG to "false"
         )
         return defaultProp
     }

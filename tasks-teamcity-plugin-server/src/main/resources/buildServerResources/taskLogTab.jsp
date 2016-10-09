@@ -63,7 +63,7 @@
         <% int fileIndex = 0; %>
         <% for (TaskScanResult taskScanResult : tasksScanResultsReport) { %>
         <% fileIndex++; %>
-        <% if (taskScanResult.getTasks().length > 0) { %>
+        <% if (taskScanResult.getTasks().size() > 0) { %>
         <tr style="background-color: lightgrey">
             <th colspan="3"
                 onclick="toggleTaskContextVisibilityForFile(<%=fileIndex%>)"><%= taskScanResult.getRelativePath() %>

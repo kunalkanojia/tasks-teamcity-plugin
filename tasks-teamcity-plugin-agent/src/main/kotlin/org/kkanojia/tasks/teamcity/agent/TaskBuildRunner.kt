@@ -37,6 +37,7 @@ class TaskBuildRunner(private val artifactsWatcher: ArtifactsWatcher) : AgentBui
         val minors = getValuesFor(runnerParameters, TaskBuildRunnerConstants.PARAM_PATTERN_MINOR_REGEX)
         val majors = getValuesFor(runnerParameters, TaskBuildRunnerConstants.PARAM_PATTERN_MAJOR_REGEX)
         val criticals = getValuesFor(runnerParameters, TaskBuildRunnerConstants.PARAM_PATTERN_CRITICAL_REGEX)
+        val failBuild: String = runnerParameters.getOrElse(TaskBuildRunnerConstants.PARAM_FAIL_BUILD_FLAG) { "false" }
 
         val workingRoot = build.checkoutDirectory
         val reportingRoot = build.buildTempDirectory
@@ -50,7 +51,8 @@ class TaskBuildRunner(private val artifactsWatcher: ArtifactsWatcher) : AgentBui
                 excludes,
                 minors,
                 majors,
-                criticals)
+                criticals,
+                failBuild.toBoolean())
     }
 
     override fun getRunnerInfo(): AgentBuildRunnerInfo {

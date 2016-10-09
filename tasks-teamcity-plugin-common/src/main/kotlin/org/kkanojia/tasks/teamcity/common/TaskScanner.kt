@@ -20,7 +20,8 @@ class TaskScanner @Throws(IOException::class)
         private val majors: List<String>,
         private val criticals: List<String>,
         private val contextBefore: Int = 2,
-        private val contextAfter: Int = 5) {
+        private val contextAfter: Int = 5,
+        private val failBuild: Boolean = false) {
 
     @Throws(IOException::class)
     fun Run(interruptionChecker: InterruptionChecker, statusLogger: StatusLogger) {
@@ -75,6 +76,11 @@ class TaskScanner @Throws(IOException::class)
             val objectOut = ObjectOutputStream(fileOut)
             objectOut.writeObject(scanResults)
             objectOut.close()
+            val containsCritical = scanResults.map { result -> result.tasks }.flatten().map { list -> list.level }.contains(TaskLevel.CRITICAL)
+
+            if(containsCritical && failBuild){
+                throw Exception("Critical tasks found marking the build as failed.")
+            }
         } catch (e: IOException) {
             // TODO
         }

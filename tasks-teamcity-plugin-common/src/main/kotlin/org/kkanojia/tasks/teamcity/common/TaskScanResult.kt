@@ -5,5 +5,5 @@ import java.io.Serializable
 data class TaskScanResult(val relativePath: String,
                           val charsetName: String,
                           val runTime: Long,
-                          val tasks: Array<TaskLine>) : Serializable
+                          val tasks: List<TaskLine>) : Serializable
 

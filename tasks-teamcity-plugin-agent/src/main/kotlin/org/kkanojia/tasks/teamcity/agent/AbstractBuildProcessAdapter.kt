@@ -39,7 +39,6 @@ abstract class AbstractBuildProcessAdapter protected constructor(protected val p
             } catch (e: InterruptedException) {
                 throw RunBuildException(e)
             }
-
         }
 
         return if (isFinished){

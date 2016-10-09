@@ -22,7 +22,8 @@ class TaskBuildProcessAdapter(
         internal val excludes: List<String>,
         internal val minors: List<String>,
         internal val majors: List<String>,
-        internal val criticals: List<String>) : AbstractBuildProcessAdapter(logger) {
+        internal val criticals: List<String>,
+        internal val failBuild: Boolean) : AbstractBuildProcessAdapter(logger) {
 
     @Throws(RunBuildException::class)
     override fun runProcess() {
@@ -47,7 +48,10 @@ class TaskBuildProcessAdapter(
                     excludes,
                     minors,
                     majors,
-                    criticals)
+                    criticals,
+                    2,
+                    5,
+                    failBuild)
             val scannerException = AtomicReference<Exception>(null)
             val interruptibleScanner = Runnable {
                 try {
