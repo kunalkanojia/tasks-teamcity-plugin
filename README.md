@@ -14,7 +14,7 @@ Additional features over todos plugin(Apart form being in awesome kotlin):
 
 1. Sensible defaults for inputs.
 
-2. Fail build on critical tasks found option. (In Progress)
+2. Option to mark the build as failed when critical tasks are found.
 
 ## Getting started
 
