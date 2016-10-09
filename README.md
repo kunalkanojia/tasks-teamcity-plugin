@@ -10,7 +10,7 @@ Original plugin - [TODOs Plugin](https://github.com/rvdginste/todo-teamcity-plug
 
 This is my way to learn Kotlin and build a teamcity plugin while learning it.
 
-Additional features over todos plugin:
+Additional features over todos plugin(Apart form being in awesome kotlin):
 
 1. Sensible defaults for inputs.
 
