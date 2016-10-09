@@ -4,9 +4,7 @@
 <%@ page import="org.unbescape.html.HtmlEscape" %>
 <%@ taglib prefix="props" tagdir="/WEB-INF/tags/props" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<jsp:useBean id="taskScanResultsReport" scope="request"
-             type="java.util.ArrayList<org.kkanojia.tasks.teamcity.common.TaskScanResult>"/>
+<jsp:useBean id="tasksScanResultsReport" scope="request" type="java.util.ArrayList<org.kkanojia.tasks.teamcity.common.TaskScanResult>"/>
 
 <div>
     <script type="text/javascript">
@@ -63,7 +61,7 @@
         </thead>
         <tbody>
         <% int fileIndex = 0; %>
-        <% for (TaskScanResult taskScanResult : taskScanResultsReport) { %>
+        <% for (TaskScanResult taskScanResult : tasksScanResultsReport) { %>
         <% fileIndex++; %>
         <% if (taskScanResult.getTasks().length > 0) { %>
         <tr style="background-color: lightgrey">

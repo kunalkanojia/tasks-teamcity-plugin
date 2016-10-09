@@ -3,6 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
        default-autowire="constructor">
-    <bean class="org.kkanojia.tasks.teamcity.server.TasksRunType"/>
-    <bean class="org.kkanojia.tasks.teamcity.server.TasksLogTab"/>
+    <bean id="tasksRunType" class="org.kkanojia.tasks.teamcity.server.TasksRunType"/>
+    <bean id="tasksLogTab" class="org.kkanojia.tasks.teamcity.server.LogTab"/>
 </beans>

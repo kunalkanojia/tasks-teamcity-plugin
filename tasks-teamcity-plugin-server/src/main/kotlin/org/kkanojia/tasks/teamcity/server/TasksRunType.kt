@@ -40,6 +40,12 @@ class TasksRunType(
     }
 
     override fun getDefaultRunnerProperties(): Map<String, String>? {
-        return HashMap()
+        val defaultProp = mapOf(
+                TaskBuildRunnerConstants.PARAM_INCLUDE_REGEX to "**/*.{java,scala,jsp,html,js,scss}",
+                TaskBuildRunnerConstants.PARAM_PATTERN_MINOR_REGEX to ".*[Ii][Dd][Ee][Aa].*",
+                TaskBuildRunnerConstants.PARAM_PATTERN_MAJOR_REGEX to ".*[Tt][Oo][Dd][Oo].*",
+                TaskBuildRunnerConstants.PARAM_PATTERN_CRITICAL_REGEX to ".*[Ff][Ii][Xx][Mm][Ee].*"
+        )
+        return defaultProp
     }
 }
