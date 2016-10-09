@@ -84,6 +84,10 @@ after the task items to provide context.
 Screenshots
 -----------
 
+- **Configure Connection**
+
+![alt text](https://github.com/shahabhameed/TeamCity_TargetProcessIntegration/blob/master/screens/screen01.png "Configure Connection")
+
 [TeamCity]: https://www.jetbrains.com/teamcity
 [TeamCity Documentation Site]: https://confluence.jetbrains.com/display/TCD9/Installing+Additional+Plugins
 [JetBrains]: https://www.jetbrains.com
