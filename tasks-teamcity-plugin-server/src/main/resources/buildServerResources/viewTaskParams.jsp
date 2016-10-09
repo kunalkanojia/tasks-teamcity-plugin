@@ -20,3 +20,7 @@
 <div class="parameter">
     Critical level:<strong><props:displayValue name="org.kkanojia.tasks.teamcity.critical" emptyValue="none"/></strong>
 </div>
+
+<div class="parameter">
+    Fail Build On Critical?:<strong><props:displayValue name="org.kkanojia.tasks.teamcity.build_fail_flag" emptyValue="false"/></strong>
+</div>

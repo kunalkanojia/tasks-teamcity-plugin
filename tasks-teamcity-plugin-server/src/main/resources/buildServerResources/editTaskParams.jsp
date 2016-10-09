@@ -63,4 +63,11 @@
             <span class="error" id="error_org.kkanojia.tasks.teamcity.critical"></span>
         </td>
     </tr>
+    <tr>
+        <th><label for="org.kkanojia.tasks.teamcity.build_fail_flag">Fail Build On Critical?:</label></th>
+        <td>
+            <props:checkboxProperty name="org.kkanojia.tasks.teamcity.build_fail_flag" checked="false" />
+        </td>
+    </tr>
+
 </l:settingsGroup>
