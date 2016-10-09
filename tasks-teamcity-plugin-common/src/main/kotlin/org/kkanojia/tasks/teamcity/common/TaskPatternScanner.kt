@@ -164,7 +164,7 @@ class TaskPatternScanner @JvmOverloads constructor(
         val taskLineArray = taskLines.toTypedArray()
         val estimatedTime = (System.nanoTime() - startTime) / 1000000
 
-        return TaskScanResult(workRoot.relativize(file).toString(), charset.name(), estimatedTime, taskLineArray)
+        return TaskScanResult(workRoot.relativize(file).toString(), charset.name(), estimatedTime, taskLineArray.toList())
     }
 
     @Throws(IOException::class)

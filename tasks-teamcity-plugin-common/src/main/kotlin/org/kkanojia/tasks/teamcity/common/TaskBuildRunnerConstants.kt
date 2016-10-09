@@ -8,6 +8,7 @@ object TaskBuildRunnerConstants {
     const val PARAM_PATTERN_MINOR_REGEX = "org.kkanojia.tasks.teamcity.minor"
     const val PARAM_PATTERN_MAJOR_REGEX = "org.kkanojia.tasks.teamcity.major"
     const val PARAM_PATTERN_CRITICAL_REGEX = "org.kkanojia.tasks.teamcity.critical"
+    const val PARAM_FAIL_BUILD_FLAG = "org.kkanojia.tasks.teamcity.build_fail_flag"
 
     const val TASK_REPORTING_FOLDER = "org.kkanojia.tasks.teamcity.report"
 
