@@ -2,16 +2,19 @@
 # Tasks TeamCity plugin
 
 This [TeamCity] plugin provides a new build runner, which will scan the
-files in your project and build a report with 'tasks's based on that.
+files in your project and build a report with tasks's based on that.
 
 ### Kotlin Fork of Todos plugin 
 
-[TODOs Plugin](https://github.com/rvdginste/todo-teamcity-plugin/blob/master/README.md)
+Original plugin - [TODOs Plugin](https://github.com/rvdginste/todo-teamcity-plugin/blob/master/README.md)
 
 This is my way to learn Kotlin and build a teamcity plugin while learning it.
-Additional features over todos plugin - 
-1. Sensible defaults
-2. Fail build on critical tasks found option (In Progress)
+
+Additional features over todos plugin:
+
+1. Sensible defaults for inputs.
+
+2. Fail build on critical tasks found option. (In Progress)
 
 ## Getting started
 
