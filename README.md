@@ -81,7 +81,11 @@ file.
 Clicking on the file name will reveal or hide extra lines before and
 after the task items to provide context.
 
+Screenshots
+-----------
 
 [TeamCity]: https://www.jetbrains.com/teamcity
 [TeamCity Documentation Site]: https://confluence.jetbrains.com/display/TCD9/Installing+Additional+Plugins
 [JetBrains]: https://www.jetbrains.com
+
+
