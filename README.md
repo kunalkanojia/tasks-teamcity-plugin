@@ -84,9 +84,27 @@ after the task items to provide context.
 Screenshots
 -----------
 
-- **Configure Connection**
 
-![alt text](https://github.com/shahabhameed/TeamCity_TargetProcessIntegration/blob/master/screens/screen01.png "Configure Connection")
+Screenshots
+-----------
+
+- **Configuration Options**
+
+![alt text](https://github.com/kunalkanojia/tasks-teamcity-plugin/blob/master/screenshots/task_options.png "Options")
+
+- **Success status**
+
+![alt text](https://github.com/kunalkanojia/tasks-teamcity-plugin/blob/master/screenshots/build_status.png "Success Status")
+
+
+- **Failure status when critical tasks found**
+
+![alt text](https://github.com/kunalkanojia/tasks-teamcity-plugin/blob/master/screenshots/fail_builds.png "Option to fail builds for critical tasks")
+
+- **Results Page**
+
+![alt text](https://github.com/kunalkanojia/tasks-teamcity-plugin/blob/master/screenshots/view_results.png "Results page")
+
 
 [TeamCity]: https://www.jetbrains.com/teamcity
 [TeamCity Documentation Site]: https://confluence.jetbrains.com/display/TCD9/Installing+Additional+Plugins
