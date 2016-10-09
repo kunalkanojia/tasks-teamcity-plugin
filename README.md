@@ -16,6 +16,8 @@ Additional features over todos plugin(Apart form being in awesome kotlin):
 
 2. Option to mark the build as failed when critical tasks are found.
 
+3. Better looking results page.(In Progress)
+
 ## Getting started
 
 ### Installing a release
