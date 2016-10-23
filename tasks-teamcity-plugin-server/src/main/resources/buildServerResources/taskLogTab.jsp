@@ -4,7 +4,8 @@
 <%@ page import="org.unbescape.html.HtmlEscape" %>
 <%@ taglib prefix="props" tagdir="/WEB-INF/tags/props" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="tasksScanResultsReport" scope="request" type="java.util.ArrayList<org.kkanojia.tasks.teamcity.common.TaskScanResult>"/>
+<jsp:useBean id="tasksScanResultsReport" scope="request"
+             type="java.util.ArrayList<org.kkanojia.tasks.teamcity.common.TaskScanResult>"/>
 
 <div>
     <script type="text/javascript">
@@ -48,9 +49,28 @@
             }
         }
     </script>
+    <style>
+        .color-box {
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+            position: absolute;
+            border: 1px solid gray;
+        }
+        .button {
+            display: block;
+            width: 115px;
+            height: 25px;
+            background: #62a3af;
+            padding: 5px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
 
     <p>
-        <a style="color: dimgrey;font-style: italic" onclick="toggleTaskContextVisibility()">Toggle context</a>
+        <a class="button" onclick="toggleTaskContextVisibility()">Toggle context</a>
     </p>
 
     <table>
@@ -64,7 +84,7 @@
         <% for (TaskScanResult taskScanResult : tasksScanResultsReport) { %>
         <% fileIndex++; %>
         <% if (taskScanResult.getTasks().size() > 0) { %>
-        <tr style="background-color: lightgrey">
+        <tr style="background-color: lightgrey; cursor:pointer;">
             <th colspan="3"
                 onclick="toggleTaskContextVisibilityForFile(<%=fileIndex%>)"><%= taskScanResult.getRelativePath() %>
             </th>
@@ -76,29 +96,29 @@
         </tr>
         <% for (TaskLine taskLine : taskScanResult.getTasks()) { %>
         <% if (taskLine.getLevel() == TaskLevel.CONTEXT) { %>
-        <tr class="taskline-context taskline-context-<%=fileIndex%>" style="display: none">
+        <tr class="taskline-context taskline-context-<%=fileIndex%>" style="display: none; padding: 5px;">
             <td style="text-align: right; color: darkgrey"><%= taskLine.getLineNumber() %>
             </td>
-            <td style="text-align: left; color: darkgrey; font-family: monospace; white-space: pre-wrap"><%= HtmlEscape.escapeHtml4(taskLine.getLine()) %>
+            <td style="text-align: left; color: darkgrey; font-family: monospace; padding-left: 10px;"><%= HtmlEscape.escapeHtml4(taskLine.getLine()) %>
             </td>
             <td></td>
         </tr>
         <% } else { %>
-        <tr>
+        <tr style="padding: 5px;">
             <td style="text-align: right"><%= taskLine.getLineNumber() %>
             </td>
-            <td style="text-align: left; font-family: monospace; white-space: pre-wrap"><%= HtmlEscape.escapeHtml4(taskLine.getLine()) %>
+            <td style="text-align: left; font-family: monospace; padding-left: 10px;"><%= HtmlEscape.escapeHtml4(taskLine.getLine()) %>
             </td>
             <td style="text-align: center">
                 <% switch (taskLine.getLevel()) {
                     case MINOR: %>
-                <img src="${teamcityPluginResourcesPath}question58.svg" height="16" width="16" border="0">
+                <div title="MINOR" class="color-box" style="background-color: #88d9ff;"></div>
                 <% break;
                     case MAJOR: %>
-                <img src="${teamcityPluginResourcesPath}triangle38.svg" height="16" width="16" border="0">
+                <div title="MAJOR" class="color-box" style="background-color: #f9ff5c;"></div>
                 <% break;
                     case CRITICAL: %>
-                <img src="${teamcityPluginResourcesPath}lightning46.svg" height="16" width="16" border="0">
+                <div title="CRITICAL" class="color-box" style="background-color: #ff6b6b;"></div>
                 <% break;
                 }
                 } %>
@@ -109,17 +129,6 @@
         <% } %>
         </tbody>
     </table>
-
-    <div style="font-size: x-small; color: lightgrey; margin-top: 1cm">Icons made by
-        <a style="color: darkgrey" href="http://www.flaticon.com/authors/daniel-bruce" title="Daniel Bruce">Daniel
-            Bruce</a>,
-        <a style="color: darkgrey" href="http://www.flaticon.com/authors/elegant-themes" title="Elegant Themes">Elegant
-            Themes</a>,
-        <a style="color: darkgrey" href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from
-        <a style="color: darkgrey" href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>
-        are licensed by <a style="color: darkgrey" href="http://creativecommons.org/licenses/by/3.0/"
-                           title="Creative Commons BY 3.0">CC BY 3.0</a>
-    </div>
 
 </div>
 

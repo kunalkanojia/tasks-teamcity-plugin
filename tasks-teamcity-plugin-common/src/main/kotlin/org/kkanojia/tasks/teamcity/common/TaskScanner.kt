@@ -82,7 +82,6 @@ class TaskScanner @Throws(IOException::class)
                 throw Exception("Critical tasks found marking the build as failed.")
             }
         } catch (e: IOException) {
-            // TODO
         }
 
     }

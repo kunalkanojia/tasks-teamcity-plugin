@@ -11,7 +11,6 @@ class GlobalPatternMatcherFileVisitor @JvmOverloads constructor(
         interruptionChecker: InterruptionChecker? = null) : BasePatternMatcherFileVisitor(root, includes, excludes, interruptionChecker) {
 
     override fun getPathMatcher(pattern: String): PathMatcher {
-
         return FileSystems.getDefault().getPathMatcher(String.format("glob:%1\$s", pattern))
     }
 

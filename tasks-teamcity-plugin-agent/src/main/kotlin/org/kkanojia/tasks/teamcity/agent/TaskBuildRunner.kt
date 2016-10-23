@@ -33,7 +33,6 @@ class TaskBuildRunner(private val artifactsWatcher: ArtifactsWatcher) : AgentBui
 
         val includes = getValuesFor(runnerParameters, TaskBuildRunnerConstants.PARAM_INCLUDE_REGEX)
         val excludes = getValuesFor(runnerParameters, TaskBuildRunnerConstants.PARAM_EXCLUDE_REGEX)
-
         val minors = getValuesFor(runnerParameters, TaskBuildRunnerConstants.PARAM_PATTERN_MINOR_REGEX)
         val majors = getValuesFor(runnerParameters, TaskBuildRunnerConstants.PARAM_PATTERN_MAJOR_REGEX)
         val criticals = getValuesFor(runnerParameters, TaskBuildRunnerConstants.PARAM_PATTERN_CRITICAL_REGEX)

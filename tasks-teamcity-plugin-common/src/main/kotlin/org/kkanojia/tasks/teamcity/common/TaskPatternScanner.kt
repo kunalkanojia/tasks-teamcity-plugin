@@ -27,7 +27,6 @@ class TaskPatternScanner @JvmOverloads constructor(
 
     private val detector = UniversalDetector(null)
 
-
     init {
         this.minors = buildPattern(minors)
         this.majors = buildPattern(majors)
@@ -160,7 +159,7 @@ class TaskPatternScanner @JvmOverloads constructor(
         }
 
         val taskLines = ArrayList(taskMap.values)
-        Collections.sort(taskLines, taskLineComparater)
+        Collections.sort(taskLines, taskLineComparator)
         val taskLineArray = taskLines.toTypedArray()
         val estimatedTime = (System.nanoTime() - startTime) / 1000000
 
@@ -173,6 +172,6 @@ class TaskPatternScanner @JvmOverloads constructor(
     }
 
     companion object {
-        private val taskLineComparater = Comparator<TaskLine> { taskLine1, taskLine2 -> taskLine1.lineNumber - taskLine2.lineNumber }
+        private val taskLineComparator = Comparator<TaskLine> { taskLine1, taskLine2 -> taskLine1.lineNumber - taskLine2.lineNumber }
     }
 }

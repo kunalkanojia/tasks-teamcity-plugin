@@ -84,14 +84,10 @@ class TaskBuildProcessAdapter(
             if (innerException != null) {
                 throw innerException
             }
-
         } catch (e: RunBuildException) {
             throw e
         } catch (e: Exception) {
             throw RunBuildException(e)
-        } finally {
-
         }
-
     }
 }

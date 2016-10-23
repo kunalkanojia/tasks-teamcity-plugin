@@ -4,7 +4,6 @@ import jetbrains.buildServer.agent.AgentBuildRunnerInfo
 import jetbrains.buildServer.agent.BuildAgentConfiguration
 import org.kkanojia.tasks.teamcity.common.TaskBuildRunnerConstants
 
-
 class TaskBuildRunnerInfo : AgentBuildRunnerInfo {
 
     override fun getType(): String {

@@ -29,18 +29,12 @@ abstract class BasePatternMatcherFileVisitor @JvmOverloads constructor(
         for (exclude in excludes) {
             excludeMatchers.add(getPathMatcher(exclude))
         }
-    }// root path
-    // interruption checker
+    }
 
     protected abstract fun getPathMatcher(pattern: String): PathMatcher
 
     private fun isMatchFor(file: Path, matchers: List<PathMatcher>): Boolean {
-        for (matcher in matchers) {
-            if (matcher.matches(file)) {
-                return true
-            }
-        }
-        return false
+        return matchers.find { it.matches(file)} != null
     }
 
     private fun isIncluded(file: Path): Boolean {
@@ -65,16 +59,7 @@ abstract class BasePatternMatcherFileVisitor @JvmOverloads constructor(
         return super.visitFile(file, attrs)
     }
 
-    val foundRelativePaths: List<Path>
-        get() = foundPaths
+    val foundRelativePaths = foundPaths
 
-    val foundAbsolutePaths: List<Path>
-        get() {
-            val result = ArrayList<Path>()
-            for (p in foundPaths) {
-                result.add(root.resolve(p))
-            }
-            return result
-        }
 }
 
