@@ -16,7 +16,9 @@ Additional features over todos plugin(Apart form being in awesome kotlin):
 
 2. Option to mark the build as failed when critical tasks are found.
 
-3. Better looking results page.
+3. Task count statistics reported to team city directly and can be viewed in the graph.
+
+4. Cleaner results page.
 
 ## Getting started
 
@@ -81,8 +83,10 @@ file.
 Clicking on the file name will reveal or hide extra lines before and
 after the task items to provide context.
 
-Screenshots
------------
+## Statistics
+
+Stats reported to team city with each build which can be added to the statistics graph.
+Reported statistic values - Pending Critical Tasks, Pending Major Tasks, Pending Minor Tasks.
 
 
 Screenshots
@@ -105,6 +109,9 @@ Screenshots
 
 ![alt text](https://github.com/kunalkanojia/tasks-teamcity-plugin/blob/master/screenshots/view_results.png "Results page")
 
+- **Statistics**
+
+![alt text](https://github.com/kunalkanojia/tasks-teamcity-plugin/blob/master/screenshots/statistics.png "Results page")
 
 [TeamCity]: https://www.jetbrains.com/teamcity
 [TeamCity Documentation Site]: https://confluence.jetbrains.com/display/TCD9/Installing+Additional+Plugins
