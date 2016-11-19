@@ -1,8 +1,10 @@
 package org.kkanojia.tasks.teamcity.common
 
+import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.ObjectOutputStream
+import java.nio.charset.Charset
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -76,12 +78,38 @@ class TaskScanner @Throws(IOException::class)
             val objectOut = ObjectOutputStream(fileOut)
             objectOut.writeObject(scanResults)
             objectOut.close()
+
+            writeStatistics(statusLogger, scanResults)
+
             val containsCritical = scanResults.map { result -> result.tasks }.flatten().map { list -> list.level }.contains(TaskLevel.CRITICAL)
 
             if(containsCritical && failBuild){
                 throw Exception("Critical tasks found marking the build as failed.")
             }
         } catch (e: IOException) {
+        }
+
+    }
+
+    private fun writeStatistics(statusLogger: StatusLogger, scanResults: ArrayList<TaskScanResult>) {
+
+        val criticalCount = scanResults.map { result -> result.tasks }.flatten().map { list -> list.level }.count { level -> level == TaskLevel.CRITICAL }
+        val majorCount = scanResults.map { result -> result.tasks }.flatten().map { list -> list.level }.count { level -> level == TaskLevel.MAJOR }
+        val minorCount = scanResults.map { result -> result.tasks }.flatten().map { list -> list.level }.count { level -> level == TaskLevel.MINOR }
+
+
+        val chartPath = Paths.get(reportingRoot.toString(), "teamcity-info.xml")
+        statusLogger.info(String.format("Storing Chart in [%1\$s]", chartPath.toString()))
+
+        val xml = "<?xml version='1.0' encoding='utf-8'?>" +
+                "<build>" +
+                "<statisticValue key='Pending Critical Tasks' value='${criticalCount}'/>" +
+                "<statisticValue key='Pending Major Tasks' value='${majorCount}'/>" +
+                "<statisticValue key='Pending Minor Tasks' value='${minorCount}'/>" +
+                "</build>"
+
+        File(chartPath.toString()).printWriter().use { out ->
+            out.println(xml)
         }
 
     }
