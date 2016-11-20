@@ -13,6 +13,7 @@ object TaskBuildRunnerConstants {
     const val TASK_REPORTING_FOLDER = "org.kkanojia.tasks.teamcity.report"
 
     const val TASK_REPORTING_FILENAME = "TasksScannerResults.ser"
+    const val STATISTICS_REPORTING_FILENAME = "teamcity-info.xml"
 
     const val TASK_REPORTING_IDENTIFICATION = "tasksScanResultsReport"
 }

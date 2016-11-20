@@ -1,6 +1,8 @@
 package org.kkanojia.tasks.teamcity.common
 
 import com.ibm.icu.text.CharsetDetector
+import org.kkanojia.tasks.teamcity.models.TaskLevel
+import org.kkanojia.tasks.teamcity.models.TaskLine
 import org.mozilla.universalchardet.UniversalDetector
 import java.io.IOException
 import java.nio.ByteBuffer

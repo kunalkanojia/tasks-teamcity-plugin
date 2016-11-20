@@ -1,5 +1,5 @@
-<%@ page import="org.kkanojia.tasks.teamcity.common.TaskLevel" %>
-<%@ page import="org.kkanojia.tasks.teamcity.common.TaskLine" %>
+<%@ page import="org.kkanojia.tasks.teamcity.models.TaskLevel" %>
+<%@ page import="org.kkanojia.tasks.teamcity.models.TaskLine" %>
 <%@ page import="org.kkanojia.tasks.teamcity.common.TaskScanResult" %>
 <%@ page import="org.unbescape.html.HtmlEscape" %>
 <%@ taglib prefix="props" tagdir="/WEB-INF/tags/props" %>

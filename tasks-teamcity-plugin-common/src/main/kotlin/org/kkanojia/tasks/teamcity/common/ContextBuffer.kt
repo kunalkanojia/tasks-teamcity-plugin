@@ -23,11 +23,11 @@ internal class ContextBuffer(val bufferSize: Int) {
         }
     }
 
-    fun getAt(pos: Int): String {
+    fun getAt(pos: Int): String? {
         assert(pos < 0)
 
         val bufferIndex = (index + pos + bufferSize) % bufferSize
-        return buffer[bufferIndex].toString()
+        return buffer[bufferIndex]
     }
 
     val bufferReversed: Array<String?>

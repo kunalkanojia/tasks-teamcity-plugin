@@ -21,20 +21,16 @@ abstract class BasePatternMatcherFileVisitor @JvmOverloads constructor(
     init {
 
         // process includes
-        for (include in includes) {
-            includeMatchers.add(getPathMatcher(include))
-        }
+        includes.mapTo(includeMatchers) { getPathMatcher(it) }
 
         // process excludes
-        for (exclude in excludes) {
-            excludeMatchers.add(getPathMatcher(exclude))
-        }
+        excludes.mapTo(excludeMatchers) { getPathMatcher(it) }
     }
 
     protected abstract fun getPathMatcher(pattern: String): PathMatcher
 
     private fun isMatchFor(file: Path, matchers: List<PathMatcher>): Boolean {
-        return matchers.find { it.matches(file)} != null
+        return matchers.find { it.matches(file) } != null
     }
 
     private fun isIncluded(file: Path): Boolean {
