@@ -1,15 +1,15 @@
 package org.kkanojia.tasks.teamcity.common
 
+import org.kkanojia.tasks.teamcity.models.TaskLevel
+import org.kkanojia.tasks.teamcity.models.TaskLine
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.ObjectOutputStream
-import java.nio.charset.Charset
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 import java.util.*
-
 
 
 class TaskScanner @Throws(IOException::class)
@@ -48,15 +48,9 @@ class TaskScanner @Throws(IOException::class)
         interruptionChecker.isInterrupted
 
         // logging the settings
-        for (minor in minors) {
-            statusLogger.info(String.format("Minors include [%1\$s].", minor))
-        }
-        for (major in majors) {
-            statusLogger.info(String.format("Majors include [%1\$s].", major))
-        }
-        for (critical in criticals) {
-            statusLogger.info(String.format("Criticals include [%1\$s].", critical))
-        }
+        minors.forEach { minor -> statusLogger.info(String.format("Minors include [%1\$s].", minor)) }
+        majors.forEach { major -> statusLogger.info(String.format("Majors include [%1\$s].", major)) }
+        criticals.forEach { critical -> statusLogger.info(String.format("Criticals include [%1\$s].", critical)) }
 
         // create task scanner
         val scanner = TaskPatternScanner(minors, majors, criticals, contextBefore, contextAfter)
@@ -79,11 +73,13 @@ class TaskScanner @Throws(IOException::class)
             objectOut.writeObject(scanResults)
             objectOut.close()
 
-            writeStatistics(statusLogger, scanResults)
+            val listOfTaskLevels = scanResults.map(TaskScanResult::tasks).flatten().map(TaskLine::level)
 
-            val containsCritical = scanResults.map { result -> result.tasks }.flatten().map { list -> list.level }.contains(TaskLevel.CRITICAL)
+            writeStatistics(statusLogger, listOfTaskLevels)
 
-            if(containsCritical && failBuild){
+            val containsCritical = listOfTaskLevels.contains(TaskLevel.CRITICAL)
+
+            if (containsCritical && failBuild) {
                 throw Exception("Critical tasks found marking the build as failed.")
             }
         } catch (e: IOException) {
@@ -91,14 +87,13 @@ class TaskScanner @Throws(IOException::class)
 
     }
 
-    private fun writeStatistics(statusLogger: StatusLogger, scanResults: ArrayList<TaskScanResult>) {
+    private fun writeStatistics(statusLogger: StatusLogger, listOfTasks: List<TaskLevel>) {
 
-        val criticalCount = scanResults.map { result -> result.tasks }.flatten().map { list -> list.level }.count { level -> level == TaskLevel.CRITICAL }
-        val majorCount = scanResults.map { result -> result.tasks }.flatten().map { list -> list.level }.count { level -> level == TaskLevel.MAJOR }
-        val minorCount = scanResults.map { result -> result.tasks }.flatten().map { list -> list.level }.count { level -> level == TaskLevel.MINOR }
+        val criticalCount = listOfTasks.count { level -> level == TaskLevel.CRITICAL }
+        val majorCount = listOfTasks.count { level -> level == TaskLevel.MAJOR }
+        val minorCount = listOfTasks.count { level -> level == TaskLevel.MINOR }
 
-
-        val chartPath = Paths.get(reportingRoot.toString(), "teamcity-info.xml")
+        val chartPath = Paths.get(reportingRoot.toString(), TaskBuildRunnerConstants.STATISTICS_REPORTING_FILENAME)
         statusLogger.info(String.format("Storing Chart in [%1\$s]", chartPath.toString()))
 
         val xml = "<?xml version='1.0' encoding='utf-8'?>" +
